@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniGP: Taming Diffusion Transformer for Prior-Preserved Unified Generation and Perception</title>
+  <meta name="description" content="UniGP is an ECCV 2026 paper on prior-preserved unified generation and perception with diffusion transformers.">
+  <style>
+    :root {
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --accent-blue: #3273dc;
+      --bg-soft: #f8f9fa;
+      --border-soft: #eeeeee;
+      --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.10);
+      --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text-primary);
+      background: #ffffff;
+      font-family: "Google Sans", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: min(100% - 3rem, 1176px);
+      margin: 0 auto;
+    }
+
+    .container-narrow {
+      width: min(100% - 3rem, 960px);
+      margin: 0 auto;
+    }
+
+    .has-text-centered {
+      text-align: center;
+    }
+
+    .hero-body {
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .publication-title-name {
+      margin: 0 0 0.55rem;
+      color: #111111;
+      font-size: clamp(3.1rem, 7vw, 5.4rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .publication-title-text {
+      max-width: 980px;
+      margin: 0 auto 1.75rem;
+      color: #2f2f2f;
+      font-size: clamp(1.55rem, 3.5vw, 2.45rem);
+      font-weight: 700;
+      line-height: 1.24;
+      letter-spacing: 0;
+    }
+
+    .publication-authors {
+      margin: 0 auto 0.8rem;
+      color: var(--text-secondary);
+      font-size: 1.18rem;
+      line-height: 1.9;
+    }
+
+    .author-block {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .author-block a {
+      color: var(--accent-blue);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .author-block a:hover {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    sup {
+      position: relative;
+      top: -0.45em;
+      font-size: 0.68em;
+      line-height: 0;
+    }
+
+    .affiliations {
+      margin-bottom: 0.2rem;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .corresponding {
+      margin-bottom: 1.55rem;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 2.45rem;
+    }
+
+    .external-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.55rem;
+      padding: 0.58rem 1.2rem;
+      border-radius: 30px;
+      background: #363636;
+      color: #ffffff;
+      font-weight: 600;
+      line-height: 1;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    }
+
+    .external-link:hover {
+      color: #ffffff;
+      background: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .teaser-img-fluid,
+    .method-img {
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      background: #ffffff;
+    }
+
+    .teaser-img-fluid {
+      max-width: 1176px;
+      margin: 0 auto;
+    }
+
+    .subtitle {
+      max-width: 920px;
+      margin: 1.75rem auto 0;
+      color: var(--text-secondary);
+      font-size: 1.08rem;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    section.section {
+      padding: 3rem 1.5rem;
+    }
+
+    section.soft {
+      background: var(--bg-soft);
+    }
+
+    .section-title {
+      margin: 0 0 1.45rem;
+      color: #1a1a1a;
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: center;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      max-width: 920px;
+      margin: -0.65rem auto 1.8rem;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .content-block {
+      max-width: 1000px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.75;
+      text-align: justify;
+    }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+      margin-top: 2rem;
+    }
+
+    .task-card {
+      min-height: 128px;
+      padding: 1.25rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .task-card h3 {
+      margin: 0 0 0.45rem;
+      color: #1a1a1a;
+      font-size: 1.06rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .task-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .figure-wrap {
+      margin: 0 auto;
+    }
+
+    .figure-wrap + .figure-wrap {
+      margin-top: 1.65rem;
+    }
+
+    .figure-wide {
+      max-width: 1176px;
+    }
+
+    .figure-medium {
+      max-width: 960px;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.65rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .method-detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 1.35rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 1.65rem auto 0;
+    }
+
+    .figure-compact {
+      max-width: 720px;
+    }
+
+    .figure-small {
+      max-width: 520px;
+    }
+
+    .figure-note {
+      max-width: 880px;
+      margin: 1rem auto 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .bibtex {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.35rem 1.45rem;
+      overflow-x: auto;
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      background: #f5f5f5;
+      color: #222222;
+      font-size: 0.92rem;
+      line-height: 1.48;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 768px) {
+      .container,
+      .container-narrow {
+        width: min(100% - 2rem, 640px);
+      }
+
+      .hero-body {
+        padding: 2.4rem 1rem 1.7rem;
+      }
+
+      .publication-title-name {
+        font-size: 3.05rem;
+      }
+
+      .publication-title-text {
+        font-size: 1.45rem;
+      }
+
+      .publication-authors {
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .affiliations {
+        font-size: 0.95rem;
+      }
+
+      .external-link {
+        min-height: 2.35rem;
+        padding: 0.52rem 1rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      section.section {
+        padding: 2.55rem 1rem;
+      }
+
+      .content-block {
+        text-align: left;
+      }
+
+      .task-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .method-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-lead,
+      .figure-note {
+        text-align: left;
+      }
+
+      .teaser-img-fluid,
+      .method-img {
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="publication-title-name">UniGP</h1>
+        <h2 class="publication-title-text">Taming Diffusion Transformer for Prior-Preserved Unified Generation and Perception</h2>
+
+        <div class="publication-authors">
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Qin_Guo1">Qin Guo</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Hao_Luo1">Hao Luo</a><sup>2,3,4</sup>,</span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Dongxu_Yue1">Dongxu Yue</a><sup>5</sup>,</span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Weixuan_Jin1">Weixuan Jin</a><sup>5</sup>,</span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Xiao_Fu3">Xiao Fu</a><sup>6</sup>,</span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Fan_Wang6">Fan Wang</a><sup>2</sup>,</span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Dan_Xu4">Dan Xu</a><sup>1†</sup></span>
+        </div>
+
+        <div class="affiliations">
+          <span class="author-block"><sup>1</sup>HKUST&nbsp;&nbsp;&nbsp;</span>
+          <span class="author-block"><sup>2</sup>DAMO Academy, Alibaba Group&nbsp;&nbsp;&nbsp;</span>
+          <span class="author-block"><sup>3</sup>Hupan Lab&nbsp;&nbsp;&nbsp;</span>
+          <span class="author-block"><sup>4</sup>Zhejiang University&nbsp;&nbsp;&nbsp;</span>
+          <span class="author-block"><sup>5</sup>Tsinghua University&nbsp;&nbsp;&nbsp;</span>
+          <span class="author-block"><sup>6</sup>CUHK</span>
+        </div>
+        <div class="corresponding">†Corresponding author</div>
+
+        <div class="publication-links">
+          <a href="assets/unigp_paper.pdf" class="external-link">Paper</a>
+          <a href="https://github.com/guoqincode/UniGP" class="external-link">Code</a>
+          <a href="#bibtex" class="external-link">BibTeX</a>
+        </div>
+
+        <img src="assets/teaser.png" class="teaser-img-fluid" alt="UniGP teaser figure">
+        <p class="subtitle">
+          UniGP simultaneously models RGB and dense distributions in a single diffusion transformer, supporting joint generation, dense perception, and any-condition text-to-image generation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container-narrow">
+      <h2 class="section-title">Abstract</h2>
+      <div class="content-block">
+        Recent advances in diffusion models have shown impressive performance in controllable image generation and dense prediction tasks. However, existing approaches typically treat diffusion-based controllable generation and dense prediction as separate tasks, overlooking the potential benefits of jointly modeling heterogeneous distributions. We introduce <b>UniGP</b>, a framework built upon MMDiT that unifies controllable generation and dense prediction through simple joint training, without complex task-specific designs or losses, while preserving the backbone's versatile priors.
+      </div>
+      <div class="task-grid">
+        <div class="task-card">
+          <h3>Controllable Generation</h3>
+          <p>Generate RGB images from spatial conditions such as depth, normal, sketch, or pose.</p>
+        </div>
+        <div class="task-card">
+          <h3>Dense Perception</h3>
+          <p>Estimate depth and surface normals from RGB images using the same unified model.</p>
+        </div>
+        <div class="task-card">
+          <h3>Joint Generation</h3>
+          <p>Sample aligned RGB, depth, and normal outputs from text in a single generative process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Main Results</h2>
+      <p class="section-lead">
+        UniGP is evaluated across controllable generation, dense prediction, joint generation, and multi-condition joint generation. A single model handles all these settings while preserving geometric consistency and high-quality RGB synthesis.
+      </p>
+      <div class="figure-wrap figure-wide">
+        <img src="assets/main_results.png" class="method-img" alt="UniGP qualitative results">
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container">
+      <h2 class="section-title">Methodology</h2>
+      <p class="section-lead">
+        UniGP adds a Disentangled Unified Generation and Perception branch to MMDiT. The backbone remains a strong generative prior, while the copied image branch learns non-RGB visual distributions for depth and surface-normal modeling.
+      </p>
+      <div class="method-grid">
+        <div class="figure-wrap figure-wide">
+          <img src="assets/method_overview.png" class="method-img" alt="Framework of UniGP">
+        </div>
+      </div>
+      <div class="method-detail-grid">
+        <div class="figure-wrap figure-compact">
+          <img src="assets/design_paradigm.png" class="method-img" alt="UniGP representative design paradigms">
+        </div>
+        <div class="figure-wrap figure-small">
+          <img src="assets/mmdit_init.png" class="method-img" alt="The MMDiT block and initialization of DUGP">
+        </div>
+      </div>
+      <p class="figure-note">
+        Compared with duplicating the entire backbone or directly fine-tuning the generative model, UniGP reuses only the image branch needed for additional visual distributions and isolates dense-prediction gradients from the generative backbone.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Ablation Study</h2>
+      <p class="section-lead">
+        Joint training creates complementary benefits: perception supervision sharpens structural alignment for generation, while generation training improves perception outputs with richer visual details.
+      </p>
+      <div class="figure-wrap figure-wide">
+        <img src="assets/ablation.png" class="method-img" alt="UniGP ablation study">
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="bibtex">
+    <div class="container">
+      <h2 class="section-title">BibTeX</h2>
+      <pre class="bibtex"><code>@inproceedings{guo2026unigp,
+  title     = {{UniGP}: Taming Diffusion Transformer for Prior-Preserved Unified Generation and Perception},
+  author    = {Guo, Qin and Luo, Hao and Yue, Dongxu and Jin, Weixuan and Fu, Xiao and Wang, Fan and Xu, Dan},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+</body>
+</html>
