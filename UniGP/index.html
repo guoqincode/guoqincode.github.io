@@ -14,6 +14,43 @@
       --border-soft: #eeeeee;
       --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.10);
       --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
+      --title-u: #111827;
+      --title-n: #312e81;
+      --title-i: #4338ca;
+      --title-g: #5b5fdd;
+      --title-p: #8b35b4;
+    }
+
+    body[data-title-theme="mono"] {
+      --title-u: #111111;
+      --title-n: #111111;
+      --title-i: #111111;
+      --title-g: #111111;
+      --title-p: #111111;
+    }
+
+    body[data-title-theme="ocean"] {
+      --title-u: #101828;
+      --title-n: #134e5e;
+      --title-i: #0e7490;
+      --title-g: #2563eb;
+      --title-p: #059669;
+    }
+
+    body[data-title-theme="slate"] {
+      --title-u: #111827;
+      --title-n: #27364a;
+      --title-i: #3b4a5f;
+      --title-g: #315c9f;
+      --title-p: #50726c;
+    }
+
+    body[data-title-theme="royal"] {
+      --title-u: #111827;
+      --title-n: #312e81;
+      --title-i: #4338ca;
+      --title-g: #5b5fdd;
+      --title-p: #8b35b4;
     }
 
     * {
@@ -76,23 +113,23 @@
     }
 
     .title-u {
-      color: #111111;
+      color: var(--title-u);
     }
 
     .title-n {
-      color: #111111;
+      color: var(--title-n);
     }
 
     .title-i {
-      color: #111111;
+      color: var(--title-i);
     }
 
     .title-g {
-      color: #2f73d8;
+      color: var(--title-g);
     }
 
     .title-p {
-      color: #16a085;
+      color: var(--title-p);
     }
 
     .publication-title-text {
@@ -332,6 +369,7 @@
 
     .figure-small {
       max-width: none;
+      transform: translateY(-16px);
     }
 
     .figure-note {
@@ -418,6 +456,10 @@
 
       .method-detail-grid .method-img {
         height: auto;
+      }
+
+      .figure-small {
+        transform: none;
       }
 
       .section-lead,
@@ -517,7 +559,7 @@
       </p>
       <div class="method-grid">
         <div class="figure-wrap figure-wide">
-          <img src="assets/method_overview_v2.png" class="method-img" alt="Framework of UniGP">
+          <img src="assets/method_overview_v3.png" class="method-img" alt="Framework of UniGP">
         </div>
       </div>
       <div class="method-detail-grid">
@@ -557,5 +599,11 @@
 }</code></pre>
     </div>
   </section>
+  <script>
+    const titleTheme = new URLSearchParams(window.location.search).get("title");
+    if (["mono", "ocean", "slate", "royal"].includes(titleTheme)) {
+      document.body.dataset.titleTheme = titleTheme;
+    }
+  </script>
 </body>
 </html>
