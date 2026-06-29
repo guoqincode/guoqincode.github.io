@@ -76,23 +76,23 @@
     }
 
     .title-u {
-      color: #2f73d8;
+      color: #111111;
     }
 
     .title-n {
-      color: #16a085;
+      color: #111111;
     }
 
     .title-i {
-      color: #d98822;
+      color: #111111;
     }
 
     .title-g {
-      color: #8e44ad;
+      color: #2f73d8;
     }
 
     .title-p {
-      color: #c0392b;
+      color: #16a085;
     }
 
     .publication-title-text {
@@ -305,19 +305,33 @@
 
     .method-detail-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.82fr);
       gap: 1.35rem;
-      align-items: center;
-      max-width: 1100px;
+      align-items: stretch;
+      max-width: 1176px;
       margin: 1.65rem auto 0;
     }
 
+    .method-detail-grid .figure-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 272px;
+    }
+
+    .method-detail-grid .method-img {
+      width: 100%;
+      height: 272px;
+      object-fit: contain;
+    }
+
     .figure-compact {
-      max-width: 720px;
+      max-width: none;
     }
 
     .figure-small {
-      max-width: 520px;
+      max-width: none;
     }
 
     .figure-note {
@@ -396,6 +410,14 @@
 
       .method-detail-grid {
         grid-template-columns: 1fr;
+      }
+
+      .method-detail-grid .figure-wrap {
+        min-height: auto;
+      }
+
+      .method-detail-grid .method-img {
+        height: auto;
       }
 
       .section-lead,
@@ -495,7 +517,7 @@
       </p>
       <div class="method-grid">
         <div class="figure-wrap figure-wide">
-          <img src="assets/method_overview.png" class="method-img" alt="Framework of UniGP">
+          <img src="assets/method_overview.png?v=2" class="method-img" alt="Framework of UniGP">
         </div>
       </div>
       <div class="method-detail-grid">
