@@ -116,10 +116,22 @@
     }
 
     .affiliations {
-      margin-bottom: 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 1.05rem;
+      row-gap: 0.1rem;
+      max-width: 1080px;
+      margin: 0 auto 0.2rem;
       color: var(--text-secondary);
       font-size: 1.05rem;
       line-height: 1.7;
+    }
+
+    .affiliation-block {
+      display: inline-block;
+      max-width: 100%;
+      white-space: normal;
     }
 
     .corresponding {
@@ -336,6 +348,9 @@
 
       .affiliations {
         font-size: 0.95rem;
+        line-height: 1.45;
+        column-gap: 0.7rem;
+        row-gap: 0.25rem;
       }
 
       .external-link {
@@ -389,16 +404,17 @@
           <span class="author-block"><a href="https://openreview.net/profile?id=~Weixuan_Jin1">Weixuan Jin</a><sup>5</sup>,</span>
           <span class="author-block"><a href="https://openreview.net/profile?id=~Xiao_Fu3">Xiao Fu</a><sup>6</sup>,</span>
           <span class="author-block"><a href="https://openreview.net/profile?id=~Fan_Wang6">Fan Wang</a><sup>2</sup>,</span>
-          <span class="author-block"><a href="https://openreview.net/profile?id=~Dan_Xu4">Dan Xu</a><sup>1†</sup></span>
+          <span class="author-block"><a href="https://openreview.net/profile?id=~Dan_Xu4">Dan Xu</a><sup>1,7†</sup></span>
         </div>
 
         <div class="affiliations">
-          <span class="author-block"><sup>1</sup>HKUST&nbsp;&nbsp;&nbsp;</span>
-          <span class="author-block"><sup>2</sup>DAMO Academy, Alibaba Group&nbsp;&nbsp;&nbsp;</span>
-          <span class="author-block"><sup>3</sup>Hupan Lab&nbsp;&nbsp;&nbsp;</span>
-          <span class="author-block"><sup>4</sup>Zhejiang University&nbsp;&nbsp;&nbsp;</span>
-          <span class="author-block"><sup>5</sup>Tsinghua University&nbsp;&nbsp;&nbsp;</span>
-          <span class="author-block"><sup>6</sup>CUHK</span>
+          <span class="affiliation-block"><sup>1</sup>The Hong Kong University of Science and Technology</span>
+          <span class="affiliation-block"><sup>2</sup>DAMO Academy, Alibaba Group, Zhejiang, China</span>
+          <span class="affiliation-block"><sup>3</sup>Hupan Lab, Zhejiang Province</span>
+          <span class="affiliation-block"><sup>4</sup>Zhejiang University, Zhejiang, China</span>
+          <span class="affiliation-block"><sup>5</sup>Tsinghua University</span>
+          <span class="affiliation-block"><sup>6</sup>The Chinese University of Hong Kong</span>
+          <span class="affiliation-block"><sup>7</sup>Zeekr Automobile R&amp;D Co., Ltd.</span>
         </div>
         <div class="corresponding">†Corresponding author</div>
 
