@@ -1,42 +1,56 @@
 [
   {
     "id": "suitcase",
-    "category": "ST",
+    "case_id": "ST_large_displacement_depth",
     "label": "Spatial transformation",
     "prompt": "Move the yellow suitcase to the far-right reception area and scale it down with distance.",
-    "explanation": "A long depth transfer also requires a consistent change in apparent size.",
     "source": "assets/suitcase-source.webp",
-    "output": "assets/suitcase-output.webp",
-    "qwen": "assets/suitcase-qwen.webp"
+    "qwen": "assets/suitcase-qwen.webp",
+    "output": "assets/suitcase-output.webp"
   },
   {
     "id": "vase",
-    "category": "OM",
+    "case_id": "OM_depth_order_swap",
     "label": "Occlusion manipulation",
     "prompt": "Place the blue vase behind the lounge chair but in front of the tall plant.",
-    "explanation": "The instruction specifies a three-layer front-to-back order.",
     "source": "assets/vase-source.webp",
-    "output": "assets/vase-output.webp",
-    "qwen": "assets/vase-qwen.webp"
+    "qwen": "assets/vase-qwen.webp",
+    "output": "assets/vase-output.webp"
   },
   {
     "id": "chair",
-    "category": "VC",
+    "case_id": "VC_severe_self_occlusion_chair",
     "label": "Viewpoint change",
     "prompt": "View the rattan chair from low rear-left so its woven back occludes most of the cushion.",
-    "explanation": "A new viewpoint must change both visible surfaces and self-occlusion.",
     "source": "assets/chair-source.webp",
-    "output": "assets/chair-output.webp",
-    "qwen": "assets/chair-qwen.webp"
+    "qwen": "assets/chair-qwen.webp",
+    "output": "assets/chair-output.webp"
   },
   {
     "id": "watering",
-    "category": "CP",
+    "case_id": "CP_scale_occlusion_viewpoint",
     "label": "Compound edit",
     "prompt": "Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it.",
-    "explanation": "Scale, support, camera motion, and occlusion interact in one edit.",
     "source": "assets/watering-source.webp",
-    "output": "assets/watering-output.webp",
-    "qwen": "assets/watering-qwen.webp"
+    "qwen": "assets/watering-qwen.webp",
+    "output": "assets/watering-output.webp"
+  },
+  {
+    "id": "pitcher",
+    "case_id": "CP_transparent_glass_occlusion",
+    "label": "Compound edit",
+    "prompt": "Place the clear glass pitcher behind the fruit basket and rotate its handle to face right.",
+    "source": "assets/pitcher-source.webp",
+    "qwen": "assets/pitcher-qwen.webp",
+    "output": "assets/pitcher-output.webp"
+  },
+  {
+    "id": "planter",
+    "case_id": "CP2_swap_objects_camera_orbit",
+    "label": "Compound edit",
+    "prompt": "Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise.",
+    "source": "assets/planter-source.webp",
+    "qwen": "assets/planter-qwen.webp",
+    "output": "assets/planter-output.webp"
   }
 ]
