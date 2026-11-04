@@ -1,0 +1,42 @@
+window.STITCHEDIT_CASES = [
+  {
+    "id": "suitcase",
+    "category": "ST",
+    "label": "Spatial transformation",
+    "prompt": "Move the yellow suitcase to the far-right reception area and scale it down with distance.",
+    "explanation": "A long depth transfer also requires a consistent change in apparent size.",
+    "source": "assets/suitcase-source.webp",
+    "output": "assets/suitcase-output.webp",
+    "qwen": "assets/suitcase-qwen.webp"
+  },
+  {
+    "id": "vase",
+    "category": "OM",
+    "label": "Occlusion manipulation",
+    "prompt": "Place the blue vase behind the lounge chair but in front of the tall plant.",
+    "explanation": "The instruction specifies a three-layer front-to-back order.",
+    "source": "assets/vase-source.webp",
+    "output": "assets/vase-output.webp",
+    "qwen": "assets/vase-qwen.webp"
+  },
+  {
+    "id": "chair",
+    "category": "VC",
+    "label": "Viewpoint change",
+    "prompt": "View the rattan chair from low rear-left so its woven back occludes most of the cushion.",
+    "explanation": "A new viewpoint must change both visible surfaces and self-occlusion.",
+    "source": "assets/chair-source.webp",
+    "output": "assets/chair-output.webp",
+    "qwen": "assets/chair-qwen.webp"
+  },
+  {
+    "id": "watering",
+    "category": "CP",
+    "label": "Compound edit",
+    "prompt": "Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it.",
+    "explanation": "Scale, support, camera motion, and occlusion interact in one edit.",
+    "source": "assets/watering-source.webp",
+    "output": "assets/watering-output.webp",
+    "qwen": "assets/watering-qwen.webp"
+  }
+];
