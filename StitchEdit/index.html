@@ -6,6 +6,7 @@
   <title>StitchEdit: Stitching Depth Priors into Image Editors via Per-Layer Gradient Probing</title>
   <meta name="description" content="StitchEdit transfers depth priors into image editors via per-layer gradient probing. Qin Guo and Dan Xu, HKUST. NeurIPS 2026.">
   <link rel="canonical" href="https://guoqincode.github.io/StitchEdit/">
+  <meta property="og:url" content="https://guoqincode.github.io/StitchEdit/">
   <meta property="og:title" content="StitchEdit · NeurIPS 2026">
   <meta property="og:description" content="Stitching Depth Priors into Image Editors via Per-Layer Gradient Probing.">
   <meta property="og:image" content="https://guoqincode.github.io/StitchEdit/assets/social-preview.jpg">
@@ -13,7 +14,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="vendor/fonts.css">
   <link rel="stylesheet" href="vendor/bulma-0.9.4.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261105">
   <script src="app.js" defer></script>
   <!-- Adapted directly from Qin Guo's Wildactor research-project template.
        See README.md for source and content provenance. -->
@@ -60,7 +61,11 @@
   <div class="container is-max-desktop">
     <h2 id="qualitative-title" class="title is-3 section-title has-text-centered">Qualitative Results</h2>
     <p class="section-lead">Spatial transformations, occlusion manipulation, viewpoint changes, and compound edits.<br class="desktop-only"> Select any image to view it at full resolution.</p>
-    <div class="comparison-list"><figure class="comparison-example" aria-labelledby="example-1-caption">
+    <div class="comparison-list">
+      <div class="comparison-header" aria-hidden="true">
+        <span>Input image</span><span>Qwen-Image-Edit</span><span class="ours">StitchEdit (Ours)</span>
+      </div>
+      <figure class="comparison-example" aria-labelledby="example-1-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
           <a href="assets/suitcase-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 1"><img src="assets/suitcase-source.webp" width="1024" height="1024" alt="Input image: Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync"></a>
