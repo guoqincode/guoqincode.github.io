@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../vendor/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261105">
+  <link rel="stylesheet" href="styles.css?v=20261105-static">
   <script src="../app.js" defer></script>
   <!-- Adapted directly from Qin Guo's Unigp research-project template.
        See README.md for source and content provenance. -->
@@ -40,15 +40,15 @@
       <div class="teaser-grid" aria-label="Selected examples from the paper teaser">
         <figure class="teaser-example">
           <div class="teaser-pair">
-            <figure><figcaption>Input image</figcaption><a href="../assets/hedge-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image of a red car"><img src="../assets/hedge-source.webp" width="1254" height="1254" alt="A red car parked by a stone building" fetchpriority="high"></a></figure>
-            <figure><figcaption>StitchEdit</figcaption><a href="../assets/hedge-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit result with a hedge in front of the car"><img src="../assets/hedge-output.webp" width="1254" height="1254" alt="A holly hedge in front of the red car, occluding its lower body" fetchpriority="high"></a></figure>
+            <figure><figcaption>Input image</figcaption><img src="../assets/hedge-source.webp" width="1254" height="1254" alt="A red car parked by a stone building" fetchpriority="high"></figure>
+            <figure><figcaption>StitchEdit</figcaption><img src="../assets/hedge-output.webp" width="1254" height="1254" alt="A holly hedge in front of the red car, occluding its lower body" fetchpriority="high"></figure>
           </div>
           <figcaption class="teaser-prompt">“Place a holly hedge in front of the car.”</figcaption>
         </figure>
         <figure class="teaser-example">
           <div class="teaser-pair">
-            <figure><figcaption>Input image</figcaption><a href="../assets/books-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image of books and a cup"><img src="../assets/books-source.webp" width="1254" height="1254" alt="Books to the left of a laptop and a cup to its right" fetchpriority="high"></a></figure>
-            <figure><figcaption>StitchEdit</figcaption><a href="../assets/books-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit result with the cup and books swapped"><img src="../assets/books-output.webp" width="1254" height="1254" alt="The cup moved to the left of the laptop and the books moved to the right" fetchpriority="high"></a></figure>
+            <figure><figcaption>Input image</figcaption><img src="../assets/books-source.webp" width="1254" height="1254" alt="Books to the left of a laptop and a cup to its right" fetchpriority="high"></figure>
+            <figure><figcaption>StitchEdit</figcaption><img src="../assets/books-output.webp" width="1254" height="1254" alt="The cup moved to the left of the laptop and the books moved to the right" fetchpriority="high"></figure>
           </div>
           <figcaption class="teaser-prompt">“Exchange the positions of the cups and the books.”</figcaption>
         </figure>
@@ -64,7 +64,7 @@
 </section><section class="section soft" id="qualitative" aria-labelledby="qualitative-title">
   <div class="container is-max-desktop">
     <h2 id="qualitative-title" class="title is-3 section-title has-text-centered">Qualitative Results</h2>
-    <p class="section-lead">Spatial transformations, occlusion manipulation, viewpoint changes, and compound edits.<br class="desktop-only"> Select any image to view it at full resolution.</p>
+    <p class="section-lead">Spatial transformations, occlusion manipulation, viewpoint changes, and compound edits.</p>
     <div class="comparison-list">
       <div class="comparison-header" aria-hidden="true">
         <span>Input image</span><span>Qwen-Image-Edit</span><span class="ours">StitchEdit (Ours)</span>
@@ -72,78 +72,78 @@
       <figure class="comparison-example" aria-labelledby="example-1-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
-          <a href="../assets/suitcase-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 1"><img src="../assets/suitcase-source.webp" width="1024" height="1024" alt="Input image: Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync"></a>
+          <img src="../assets/suitcase-source.webp" width="1024" height="1024" alt="Input image: Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell">
           <figcaption>Qwen-Image-Edit</figcaption>
-          <a href="../assets/suitcase-qwen.webp" target="_blank" rel="noopener" aria-label="Open full-resolution Qwen-Image-Edit image for example 1"><img src="../assets/suitcase-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync"></a>
+          <img src="../assets/suitcase-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell ours">
           <figcaption>StitchEdit (Ours)</figcaption>
-          <a href="../assets/suitcase-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit (Ours) image for example 1"><img src="../assets/suitcase-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync"></a>
+          <img src="../assets/suitcase-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Move the yellow suitcase to the far-right reception area and scale it down with distance." loading="eager" decoding="sync">
         </figure></div>
       <figcaption id="example-1-caption" class="comparison-caption"><strong>Spatial transformation.</strong> “Move the yellow suitcase to the far-right reception area and scale it down with distance.”</figcaption>
     </figure>
 <figure class="comparison-example" aria-labelledby="example-2-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
-          <a href="../assets/vase-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 2"><img src="../assets/vase-source.webp" width="1024" height="1024" alt="Input image: Place the blue vase behind the lounge chair but in front of the tall plant." loading="eager" decoding="sync"></a>
+          <img src="../assets/vase-source.webp" width="1024" height="1024" alt="Input image: Place the blue vase behind the lounge chair but in front of the tall plant." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell">
           <figcaption>Qwen-Image-Edit</figcaption>
-          <a href="../assets/vase-qwen.webp" target="_blank" rel="noopener" aria-label="Open full-resolution Qwen-Image-Edit image for example 2"><img src="../assets/vase-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Place the blue vase behind the lounge chair but in front of the tall plant." loading="eager" decoding="sync"></a>
+          <img src="../assets/vase-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Place the blue vase behind the lounge chair but in front of the tall plant." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell ours">
           <figcaption>StitchEdit (Ours)</figcaption>
-          <a href="../assets/vase-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit (Ours) image for example 2"><img src="../assets/vase-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Place the blue vase behind the lounge chair but in front of the tall plant." loading="eager" decoding="sync"></a>
+          <img src="../assets/vase-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Place the blue vase behind the lounge chair but in front of the tall plant." loading="eager" decoding="sync">
         </figure></div>
       <figcaption id="example-2-caption" class="comparison-caption"><strong>Occlusion manipulation.</strong> “Place the blue vase behind the lounge chair but in front of the tall plant.”</figcaption>
     </figure>
 <figure class="comparison-example" aria-labelledby="example-3-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
-          <a href="../assets/chair-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 3"><img src="../assets/chair-source.webp" width="1024" height="1024" alt="Input image: View the rattan chair from low rear-left so its woven back occludes most of the cushion." loading="eager" decoding="sync"></a>
+          <img src="../assets/chair-source.webp" width="1024" height="1024" alt="Input image: View the rattan chair from low rear-left so its woven back occludes most of the cushion." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell">
           <figcaption>Qwen-Image-Edit</figcaption>
-          <a href="../assets/chair-qwen.webp" target="_blank" rel="noopener" aria-label="Open full-resolution Qwen-Image-Edit image for example 3"><img src="../assets/chair-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: View the rattan chair from low rear-left so its woven back occludes most of the cushion." loading="eager" decoding="sync"></a>
+          <img src="../assets/chair-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: View the rattan chair from low rear-left so its woven back occludes most of the cushion." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell ours">
           <figcaption>StitchEdit (Ours)</figcaption>
-          <a href="../assets/chair-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit (Ours) image for example 3"><img src="../assets/chair-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): View the rattan chair from low rear-left so its woven back occludes most of the cushion." loading="eager" decoding="sync"></a>
+          <img src="../assets/chair-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): View the rattan chair from low rear-left so its woven back occludes most of the cushion." loading="eager" decoding="sync">
         </figure></div>
       <figcaption id="example-3-caption" class="comparison-caption"><strong>Viewpoint change.</strong> “View the rattan chair from low rear-left so its woven back occludes most of the cushion.”</figcaption>
     </figure>
 <figure class="comparison-example" aria-labelledby="example-4-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
-          <a href="../assets/watering-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 4"><img src="../assets/watering-source.webp" width="1024" height="1024" alt="Input image: Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it." loading="eager" decoding="sync"></a>
+          <img src="../assets/watering-source.webp" width="1024" height="1024" alt="Input image: Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell">
           <figcaption>Qwen-Image-Edit</figcaption>
-          <a href="../assets/watering-qwen.webp" target="_blank" rel="noopener" aria-label="Open full-resolution Qwen-Image-Edit image for example 4"><img src="../assets/watering-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it." loading="eager" decoding="sync"></a>
+          <img src="../assets/watering-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell ours">
           <figcaption>StitchEdit (Ours)</figcaption>
-          <a href="../assets/watering-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit (Ours) image for example 4"><img src="../assets/watering-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it." loading="eager" decoding="sync"></a>
+          <img src="../assets/watering-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it." loading="eager" decoding="sync">
         </figure></div>
       <figcaption id="example-4-caption" class="comparison-caption"><strong>Compound edit.</strong> “Scale down the purple watering can, place it on the left end of the bench, and shift the camera right so a pot partly occludes it.”</figcaption>
     </figure>
 <figure class="comparison-example" aria-labelledby="example-5-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
-          <a href="../assets/pitcher-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 5"><img src="../assets/pitcher-source.webp" width="1024" height="1024" alt="Input image: Place the clear glass pitcher behind the fruit basket and rotate its handle to face right." loading="eager" decoding="sync"></a>
+          <img src="../assets/pitcher-source.webp" width="1024" height="1024" alt="Input image: Place the clear glass pitcher behind the fruit basket and rotate its handle to face right." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell">
           <figcaption>Qwen-Image-Edit</figcaption>
-          <a href="../assets/pitcher-qwen.webp" target="_blank" rel="noopener" aria-label="Open full-resolution Qwen-Image-Edit image for example 5"><img src="../assets/pitcher-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Place the clear glass pitcher behind the fruit basket and rotate its handle to face right." loading="eager" decoding="sync"></a>
+          <img src="../assets/pitcher-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Place the clear glass pitcher behind the fruit basket and rotate its handle to face right." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell ours">
           <figcaption>StitchEdit (Ours)</figcaption>
-          <a href="../assets/pitcher-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit (Ours) image for example 5"><img src="../assets/pitcher-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Place the clear glass pitcher behind the fruit basket and rotate its handle to face right." loading="eager" decoding="sync"></a>
+          <img src="../assets/pitcher-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Place the clear glass pitcher behind the fruit basket and rotate its handle to face right." loading="eager" decoding="sync">
         </figure></div>
       <figcaption id="example-5-caption" class="comparison-caption"><strong>Compound edit.</strong> “Place the clear glass pitcher behind the fruit basket and rotate its handle to face right.”</figcaption>
     </figure>
 <figure class="comparison-example" aria-labelledby="example-6-caption">
       <div class="comparison-grid"><figure class="comparison-cell">
           <figcaption>Input image</figcaption>
-          <a href="../assets/planter-source.webp" target="_blank" rel="noopener" aria-label="Open full-resolution input image for example 6"><img src="../assets/planter-source.webp" width="1024" height="1024" alt="Input image: Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise." loading="eager" decoding="sync"></a>
+          <img src="../assets/planter-source.webp" width="1024" height="1024" alt="Input image: Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell">
           <figcaption>Qwen-Image-Edit</figcaption>
-          <a href="../assets/planter-qwen.webp" target="_blank" rel="noopener" aria-label="Open full-resolution Qwen-Image-Edit image for example 6"><img src="../assets/planter-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise." loading="eager" decoding="sync"></a>
+          <img src="../assets/planter-qwen.webp" width="1024" height="1024" alt="Qwen-Image-Edit: Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise." loading="eager" decoding="sync">
         </figure><figure class="comparison-cell ours">
           <figcaption>StitchEdit (Ours)</figcaption>
-          <a href="../assets/planter-output.webp" target="_blank" rel="noopener" aria-label="Open full-resolution StitchEdit (Ours) image for example 6"><img src="../assets/planter-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise." loading="eager" decoding="sync"></a>
+          <img src="../assets/planter-output.webp" width="1024" height="1024" alt="StitchEdit (Ours): Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise." loading="eager" decoding="sync">
         </figure></div>
       <figcaption id="example-6-caption" class="comparison-caption"><strong>Compound edit.</strong> “Swap the blue planter and orange lantern, then orbit the camera 60 degrees clockwise.”</figcaption>
     </figure></div>
@@ -152,7 +152,7 @@
   <div class="container is-max-desktop">
     <h2 id="method-title" class="title is-3 section-title has-text-centered">Methodology</h2>
     <figure class="figure-wrap">
-      <a href="../assets/paper-method.pdf" target="_blank" rel="noopener" aria-label="Open full-resolution method figure from the paper"><img class="method-img" src="../assets/paper-method.webp" width="2400" height="1131" alt="Original paper method figure: Stage 1 depth activation, per-layer gradient probing, and Stage 2 selective editing fine-tuning" loading="eager" decoding="sync"></a>
+      <img class="method-img" src="../assets/paper-method.webp" width="2400" height="1131" alt="Original paper method figure: Stage 1 depth activation, per-layer gradient probing, and Stage 2 selective editing fine-tuning" loading="eager" decoding="sync">
       <figcaption class="figure-note">Depth activation, per-layer gradient probing, and probe-guided editing fine-tuning.</figcaption>
     </figure>
     <div class="content-block method-description"><p>StitchEdit first activates the backbone’s geometric capability with a lightweight depth-denoising adapter. Per-layer gradient probing then measures the compatibility between depth and editing objectives: early layers cooperate, while late layers conflict. The probing profile guides both the per-layer learning-rate schedule and the pruning of conflicting adapters during editing fine-tuning.</p></div>
